@@ -1,1 +1,0 @@
-We are commiting code to GitHub and then deploying to Jenkins.
