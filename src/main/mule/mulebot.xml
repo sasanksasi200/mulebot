@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cbf4acbe-e100-42c1-b787-f995b5ae503e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mulebotFlow" doc:id="f58051b1-cc41-4c9c-adbf-8a3f4c516425" >
+		<http:listener doc:name="Listener" doc:id="896463f9-8e5b-43c6-98d0-62ac189a3f54" config-ref="HTTP_Listener_config" path="/slack" allowedMethods="POST"/>
+		<logger level="INFO" doc:name="Logger" doc:id="0aab68d0-c986-4a5b-a993-3025308c0bd0" message="#[payload.text]"/>
+	</flow>
+</mule>
